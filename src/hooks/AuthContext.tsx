@@ -17,8 +17,10 @@ interface AuthContextData {
   signOut(): void;
 }
 
+// Context
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
+// Component
 const AuthProvider: React.FC = ({ children }) => {
   const [authData, setAuthData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@GoBarber:token');
@@ -53,12 +55,13 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: authData.user, signIn }}>
+    <AuthContext.Provider value={{ user: authData.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
+// Hook
 function useAuth(): AuthContextData {
   const context = useContext(AuthContext);
 
