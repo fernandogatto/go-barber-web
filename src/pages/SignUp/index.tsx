@@ -14,7 +14,7 @@ import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import { useToast } from '../../hooks/ToastContext';
+import { useToast } from '../../hooks/toast';
 
 import { Container, Content, AnimationContainer, Background } from './styles';
 
