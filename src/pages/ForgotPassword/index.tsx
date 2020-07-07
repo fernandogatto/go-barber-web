@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiMail, FiArrowLeft } from 'react-icons/fi';
 import { Form } from '@unform/web';
@@ -20,11 +20,15 @@ import {
   Background,
 } from './styles';
 
+import api from '../../services/api';
+
 interface ForgotPasswordFormData {
   email: string;
 }
 
 const ForgotPassword: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
 
@@ -32,23 +36,29 @@ const ForgotPassword: React.FC = () => {
 
   const handleSubmit = useCallback(async (data: ForgotPasswordFormData) => {
     try {
+      setLoading(true);
+
       const schemas = Yup.object().shape({
         email: Yup.string()
-          .required('E-mail obrigatório')
-          .email('Digite um e-mail válido'),
+          .email('Digite um e-mail válido')
+          .required('E-mail obrigatório'),
       });
 
       await schemas.validate(data, {
         abortEarly: false,
       });
 
+      await api.post('/password/forgot', {
+        email: data.email,
+      });
+
       // history('/');
 
-      // addToast({
-      //   type: 'success',
-      //   title: 'Senha trocada',
-      //   description: 'Você já pode fazer login com a nova senha!',
-      // });
+      addToast({
+        type: 'success',
+        title: 'E-mail enviado',
+        description: 'Enviamos um e-mail para confirmar a recuperação de senha.',
+      });
     } catch(err) {
       if(err instanceof Yup.ValidationError) {
         const errors = getValidationErros(err);
@@ -61,6 +71,8 @@ const ForgotPassword: React.FC = () => {
         title: 'Erro na recuperação de senha',
         description: 'Ocorreu um erro ao tentar realizar a recuperação de senha, tente novamente.',
       });
+    } finally {
+      setLoading(false);
     }
   }, [addToast]);
 
@@ -75,7 +87,9 @@ const ForgotPassword: React.FC = () => {
 
             <Input name="email" icon={FiMail} type="text" placeholder="E-mail"/>
 
-            <Button type="submit" >Recuperar</Button>
+            <Button type="submit" loading={loading}>
+              Recuperar
+            </Button>
           </Form>
 
           <Link to="/">
