@@ -55,7 +55,7 @@ const SignIn: React.FC = () => {
         type: 'success',
         title: 'Logon realizado',
         description: 'Você já pode navegar pelo Dashboard!',
-      })
+      });
     } catch(err) {
       if(err instanceof Yup.ValidationError) {
         const errors = getValidationErros(err);
@@ -86,7 +86,7 @@ const SignIn: React.FC = () => {
 
             <Button type="submit" >Entrar</Button>
 
-            <Link to="#">Esqueci a senha</Link>
+            <Link to="/forgot-password">Esqueci a senha</Link>
           </Form>
 
           <Link to="/signup">
