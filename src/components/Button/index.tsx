@@ -6,7 +6,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 };
 
-const Button:React.FC<ButtonProps> = ({ children, loading, ...props }) => (
+const Button:React.FC<ButtonProps> = ({ loading, children, ...props }) => (
   <Container type="button" {...props}>
     {loading ? <Loading /> : children}
   </Container>

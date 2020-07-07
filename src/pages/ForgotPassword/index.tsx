@@ -1,5 +1,5 @@
 import React, { useRef, useCallback, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiMail, FiArrowLeft } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -32,11 +32,11 @@ const ForgotPassword: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
 
-  const history = useHistory();
-
   const handleSubmit = useCallback(async (data: ForgotPasswordFormData) => {
     try {
       setLoading(true);
+
+      formRef.current?.setErrors({});
 
       const schemas = Yup.object().shape({
         email: Yup.string()
@@ -51,8 +51,6 @@ const ForgotPassword: React.FC = () => {
       await api.post('/password/forgot', {
         email: data.email,
       });
-
-      // history('/');
 
       addToast({
         type: 'success',
