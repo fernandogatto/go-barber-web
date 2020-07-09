@@ -186,6 +186,7 @@ export const Appointment = styled.div`
   span {
     margin-left: auto;
     color: #f4ede8;
+    width: 70px;
 
     display: flex;
     align-items: center;
