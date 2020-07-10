@@ -11,7 +11,7 @@
 [![Contributors](https://img.shields.io/github/contributors/fernandogatto/go-barber-web?color=%2bd361)](https://github.com/fernandogatto/go-barber-web/graphs/contributors)
 [![License](https://img.shields.io/badge/license-MIT-%2bd361)](https://choosealicense.com/licenses/mit/)
 
-> Web application from Go Barber System. Build on *GoStack 11.0**, organized by [Rocketseat](https://rocketseat.com.br/).
+> Web application from Go Barber System. Build on **GoStack 11.0**, organized by [Rocketseat](https://rocketseat.com.br/).
 
 ## 🔗 Table of contents
 - [Features](#features)
@@ -29,7 +29,6 @@
 - List appointments
 - Update profile
 - TDD (comming soon)
-- Light / dark theme (comming soon)
 
 To get the API, follow this [GoBarber API](https://github.com/fernandogatto/go-barber-api).
 
