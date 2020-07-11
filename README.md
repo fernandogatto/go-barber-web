@@ -76,7 +76,11 @@ yarn start
 ```
 ## 💻 Project <a name="project"/>
 
+![](/assets/login.gif)
 
+![](/assets/dashboard.gif)
+
+![](/assets/update-profile.gif)
 
 ## 👍 Contribute <a name="contribute"/>
 
