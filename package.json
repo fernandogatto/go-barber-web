@@ -13,7 +13,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.0",
     "@unform/core": "^2.1.0",
-    "@unform/web": "^2.1.0",
+    "@unform/web": "^2.1.4",
     "axios": "^0.19.2",
     "polished": "^3.5.2",
     "react": "^16.13.1",
